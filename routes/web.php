@@ -27,8 +27,8 @@ Route::get('/', function () {
 
 Route::get('/inscritos  ', [InscritoController::class, 'showInscritos']);
 Route::get('/inscritos/{name}', [InscritoController::class, 'createInscrito']);
-
-
+Route::get('/inscritos/{inscrito}/{rua}', [InscritoController::class, 'addEndereco']);
+Route::get('/inscritos/delete/endereco/{inscrito}/', [InscritoController::class, 'deleteEndereco']);
 
 
 

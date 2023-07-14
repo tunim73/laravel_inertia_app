@@ -19,4 +19,18 @@ class InscritoController extends Controller
         $save = $inscrito->save();
         dd($name, $save);
     }
+
+    public function addEndereco (Inscrito $inscrito, string $rua) {
+
+        $newEndereco = compact('rua');
+        $save = $inscrito->endereco()->create($newEndereco);
+        dd($save);
+
+    }
+    public function deleteEndereco (Inscrito $inscrito) {
+        $delete = $inscrito->endereco()->delete();
+        dd($delete);
+    }
+
+
 }
