@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\InscritoResource;
 use App\Models\Inscrito;
 use Illuminate\Http\Request;
 
 class InscritoController extends Controller
 {
     public function showInscritos () {
-       $inscritos = Inscrito::all();
-       dd($inscritos);
+       $inscritos = Inscrito::all()->load(['endereco']);
+
+       $inscritosResource = InscritoResource::collection($inscritos);
+
+       return $inscritosResource;
 
     }
 
