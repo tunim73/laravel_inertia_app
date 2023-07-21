@@ -19,9 +19,11 @@ class InscritoResource extends JsonResource
     public function toArray(Request $request): array
     {
         //return parent::toArray($request);
-        //$endereco = EnderecoResource::collection($this->endereco)
         //$endereco = EnderecoResource::collection($this->endereco);
-        $endereco = $this->endereco;
+        //$endereco = $this->endereco;
+
+        $endereco = new EnderecoResource($this->endereco);
+
         return [
             'id' => $this->id,
             'name' => $this->name,
