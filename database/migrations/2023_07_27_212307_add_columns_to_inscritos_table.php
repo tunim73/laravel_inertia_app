@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::table('inscritos', function (Blueprint $table) {
             $table->string('phone', 20)->nullable();
             $table->date('birthDate')->nullable();
-            $table->string('document', 20)->nullable();
+            $table->string('document', 20);
         });
     }
 

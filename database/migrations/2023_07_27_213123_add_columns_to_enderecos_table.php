@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::table('enderecos', function (Blueprint $table) {
 
-            $table->string('number',8)->nullable();
-            $table->string('complement',30);
-            $table->string('locality',18)->nullable();
+            $table->string('number',8);
+            $table->string('complement',30)->nullable();
+            $table->string('locality',18);
 
         });
     }

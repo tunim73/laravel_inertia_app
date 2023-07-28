@@ -17,7 +17,7 @@ return new class extends Migration
                 ->constrained()
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
-            $table->string('rua',200)->nullable();
+            $table->string('rua',200);
             $table->timestamps();
         });
     }
