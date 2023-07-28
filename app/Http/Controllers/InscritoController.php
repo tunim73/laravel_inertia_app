@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\InscritoResource;
 use App\Models\Inscrito;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class InscritoController extends Controller
 {
@@ -13,7 +14,12 @@ class InscritoController extends Controller
 
        $inscritosResource = InscritoResource::collection($inscritos);
 
-       return $inscritosResource;
+       //return $inscritosResource;
+       return Inertia::render('Inscrito/index', [
+            'inscritos' => $inscritosResource
+       ]);
+
+
 
     }
 

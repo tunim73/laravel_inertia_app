@@ -26,16 +26,14 @@ Route::middleware([
 });
 
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'title' => 'Xuxa'
-    ]);
-});
+Route::get('/', [InscritoController::class, 'showInscritos']);
+
 
 
 Route::get('/inscritos', [InscritoController::class, 'showInscritos']);
-Route::get('/inscritos/{name}', [InscritoController::class, 'createInscrito']);
-Route::get('/inscritos/{inscrito}/{rua}', [InscritoController::class, 'addEndereco']);
-Route::get('/inscritos/delete/endereco/{inscrito}/', [InscritoController::class, 'deleteEndereco']);
+Route::get('/inscritos/{name}', [InscritoController::class, 'createInscrito']); //post
+Route::get('/inscritos/{inscrito}/{rua}', [InscritoController::class, 'addEndereco']); //post
+Route::get('/inscritos/delete/endereco/{inscrito}/', [InscritoController::class,
+    'deleteEndereco']); //delete
 
 

@@ -23,12 +23,13 @@ class InscritoResource extends JsonResource
         //$endereco = $this->endereco;
 
         $endereco = new EnderecoResource($this->endereco);
+        $date = date('d/m/Y', strtotime($this->birthDate));
 
         return [
             'id' => $this->id,
             'name' => $this->name,
             'document' => $this->document,
-            'birthDate' => $this->birthDate,
+            'birthDate' => $date,
             'phone' => $this->phone,
             'endereco' => $endereco
         ];
