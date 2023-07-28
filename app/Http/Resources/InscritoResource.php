@@ -27,7 +27,16 @@ class InscritoResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'document' => $this->document,
+            'birthDate' => $this->birthDate,
+            'phone' => $this->phone,
             'endereco' => $endereco
         ];
     }
 }
+
+/*
+NOME - DATA DE NASCIMENTO - TELEFONE - DOCUMENTO - RUA -
+NUMERO - COMPLEMENTO - BAIRRO
+
+*/
