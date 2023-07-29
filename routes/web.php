@@ -26,14 +26,14 @@ Route::middleware([
 });
 
 
-Route::get('/', [InscritoController::class, 'showInscritos']);
+Route::get('/', [InscritoController::class, 'showInscritos'])->name('dashboardInscritos');
+Route::delete('/inscritos/{inscrito}/', [InscritoController::class,
+    'deleteInscrito']);
 
 
 
 Route::get('/inscritos', [InscritoController::class, 'showInscritos']);
 Route::get('/inscritos/{name}', [InscritoController::class, 'createInscrito']); //post
 Route::get('/inscritos/{inscrito}/{rua}', [InscritoController::class, 'addEndereco']); //post
-Route::get('/inscritos/delete/endereco/{inscrito}/', [InscritoController::class,
-    'deleteEndereco']); //delete
-
-
+Route::delete('/inscritos/delete/endereco/{inscrito}/', [InscritoController::class,
+    'deleteEndereco']);
