@@ -33,12 +33,8 @@ const fullEndereco = (end) => {
         ${end.locality}`
 }
 
-const onDeleteEnderecoInscrito = (id) => {
-    router.delete(`/inscritos/endereco/${id}/`)
-}
-
 const onDeleteInscrito = (id) => {
-    router.delete(`/inscritos/${id}/`)
+    router.delete(`/inscritos/${id}/`)    
 }
 
 </script>
