@@ -37,9 +37,15 @@ const onDeleteInscrito = (id) => {
     router.delete(`/inscritos/${id}/`)    
 }
 
+function exportarInscritos() {
+    router.get("/inscritos/export/")
+  };
+      
+
 </script>
 
 <template>
+    <button @click="exportarInscritos">Exportar para XLS</button>
     <table
         class="table-fixed border-collapse
             border border-indigo-500 p-2 bg-gray-100">
@@ -72,7 +78,3 @@ const onDeleteInscrito = (id) => {
     </table>
     <!-- <Link :href="route('dashboard')" >X</Link>-->
 </template>
-
-<style scoped>
-
-</style>
