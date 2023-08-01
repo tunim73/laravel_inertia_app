@@ -24,9 +24,14 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');  
     Route::get('/', [InscritoController::class, 'showInscritos'])->name('showInscritos');  
+    Route::get('/inscritos/export/', [InscritoController::class, 'export'])->name('exportInscritos');
     Route::delete('/inscritos/{inscrito}/', [InscritoController::class,
     'deleteInscrito']);
     Route::get('/inscritos', [InscritoController::class, 'showInscritos']);
     Route::get('/inscritos/{name}', [InscritoController::class, 'createInscrito']); //post
     Route::get('/inscritos/{inscrito}/{rua}', [InscritoController::class, 'addEndereco']); //post
 });
+
+Route::get('phpmyinfo', function () {
+    phpinfo(); 
+})->name('phpmyinfo');

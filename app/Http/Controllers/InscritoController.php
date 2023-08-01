@@ -7,6 +7,9 @@ use App\Models\Inscrito;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\InscritosExport;
 
 class InscritoController extends Controller 
 {
@@ -19,6 +22,11 @@ class InscritoController extends Controller
             'inscritos' => $inscritosResource
        ]);
 
+    }
+
+    public function export() 
+    {
+        return Excel::download(new InscritosExport, 'inscritos.xlsx');
     }
 
     public function createInscrito (string $name) {
