@@ -32,8 +32,7 @@ class InscritoController extends Controller
     public function createInscrito (string $name) {
         $inscrito = new Inscrito();
         $inscrito->name = $name;
-        $save = $inscrito->save();
-        dd($name, $save);
+        $save = $inscrito->save();        
     }
 
     public function deleteInscrito(int $id)
