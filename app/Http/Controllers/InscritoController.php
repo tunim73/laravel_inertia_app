@@ -8,15 +8,14 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 
-class InscritoController extends Controller
+class InscritoController extends Controller 
 {
     public function showInscritos () {
-       $inscritos = Inscrito::all()->load(['endereco']);
 
+       $inscritos = Inscrito::with('endereco')->paginate(10);
        $inscritosResource = InscritoResource::collection($inscritos);
 
-       //return $inscritosResource;
-       return Inertia::render('Inscrito/index', [
+       return Inertia::render('Inscrito/Index', [
             'inscritos' => $inscritosResource
        ]);
 
@@ -31,19 +30,11 @@ class InscritoController extends Controller
 
     public function deleteInscrito(int $id)
     {
-        /* 'use ($id)' serve para que eu utilize a variavel id dentro dessa função anonima,
-        aparentemente a função anônima é um casulo, e não deixa entrar variáveis do escopo externo
-        dentro da função, a menos que utilize "use ($variavel)"
-        */
-        DB::transaction(function () use ($id) {
-            Inscrito::destroy($id);
-        }, 5);
-
-        /*
-            $inscrito = Inscrito::find($id);
-            $inscrito->delete();
-        */
-        return to_route('dashboardInscritos');
+        $inscrito = Inscrito::find($id);
+        $inscrito->delete();
+        session()->flash('flash.banner', 'Inscrito removido com sucesso!');
+        session()->flash('flash.bannerStyle', 'success');
+        return to_route('showInscritos');
 
     }
 
@@ -54,10 +45,4 @@ class InscritoController extends Controller
         dd($save);
 
     }
-    public function deleteEndereco (Inscrito $inscrito) {
-        $delete = $inscrito->endereco()->delete();
-        return to_route('dashboardInscritos');
-    }
-
-
 }
